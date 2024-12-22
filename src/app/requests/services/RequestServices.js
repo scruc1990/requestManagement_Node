@@ -2,7 +2,23 @@ import ValidateException from "../../../utils/functions/validationException.js";
 import EmployeeServices from "../../employees/services/EmployeeServices.js";
 import RequestDao from "../dao/RequestDao.js";
 
+/**
+ * Clase para manejar la lógica de negocio de las solicitudes
+ * 
+ * @Author Cristian David Herrera
+ * @date 2024-12-21
+ */
 class RequestServices {
+    /**
+     * Método para obtener todas las solicitudes
+     * 
+     * @returns {Promise<Array>} Lista con las solicitudes
+     * 
+     * @throws ValidateException Si ocurre un error al obtener las solicitudes
+     * 
+     * @Author Cristian David Herrera
+     * @date 2024-12-21 
+     */
     static async getAllRequests() {
         try {
             return await RequestDao.getAllWithEmployeeName();
@@ -12,6 +28,17 @@ class RequestServices {
         }
     }
 
+    /**
+     * Método para obtener una solicitud por su id
+     * 
+     * @param {number} id Id de la solicitud
+     * @returns {Promise<Object>} Objeto con los datos de la solicitud
+     * 
+     * @throws ValidateException Si ocurre un error al obtener la solicitud
+     * 
+     * @Author Cristian David Herrera
+     * @date 2024-12-21
+     */
     static async getRequestById(id) {
         try {
             return await RequestDao.getById(id);
@@ -21,6 +48,17 @@ class RequestServices {
         }
     }
 
+    /**
+     * Método para crear una nueva solicitud
+     * 
+     * @param {*} request Objeto con los datos de la solicitud
+     * @returns {Promise<Object>} Objeto con la respuesta de la petición
+     * 
+     * @throws ValidateException Si ocurre un error al crear la solicitud
+     * 
+     * @Author Cristian David Herrera
+     * @date 2024-12-21
+     */
     static async createRequest(request) {
         const response = {
             success: false,
@@ -52,6 +90,17 @@ class RequestServices {
         }
     }
 
+    /**
+     * Método para eliminar una solicitud
+     * 
+     * @param {*} id Id de la solicitud
+     * @returns {Promise<Object>} Objeto con la respuesta de la petición
+     * 
+     * @throws ValidateException Si ocurre un error al eliminar la solicitud
+     * 
+     * @Author Cristian David Herrera
+     * @date 2024-12-21
+     */
     static async deleteRequest(id) {
         const response = {
             success: false,

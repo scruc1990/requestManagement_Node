@@ -1,6 +1,12 @@
+  /**
+ * Función que crea la tabla solicitud en la base de datos
+ * @param {*} knex Objeto de conexión a la base de datos
+ * 
+ * @author Cristian David Herrera
+ * @date 2024-12-21
+ */
+  export async function up(knex) {
 
-export async function up(knex) {
-    console.log(process.env.DB_SCHEMA, '2');
     await knex.schema.withSchema(`${process.env.DB_SCHEMA}`).createTable('solicitud', (table) => {
       table.increments('id').primary();
       table.string('codigo', 50).notNullable();
@@ -14,6 +20,13 @@ export async function up(knex) {
     });
   }
   
+  /**
+   * Función que elimina la tabla solicitud en la base de datos
+   * @param {*} knex Objeto de conexión a la base de datos
+   * 
+   * @author Cristian David Herrera
+   * @date 2024-12-21
+   */
   export async function down(knex) {
     await knex.schema.withSchema(`${process.env.DB_SCHEMA}`).dropTable('solicitud');
   }

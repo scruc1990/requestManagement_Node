@@ -3,7 +3,23 @@ import schemaValidate from "../../../utils/functions/schemaValidate.js";
 import RequestServices from "../services/RequestServices.js";
 import Joi from 'joi';
 
+/**
+ * Clase para el controlador de las peticiones para solicitudes
+ * 
+ * @Author Cristian David Herrera
+ * @date 2024-12-21
+ */
 class RequestController {
+    /**
+     * Método para obtener todas las solicitudes
+     * 
+     * @param {Request} _ Objeto de petición
+     * @param {Response} res Objeto de respuesta
+     * @returns {Promise<Response>} Respuesta de la petición
+     * 
+     * @Author Cristian David Herrera
+     * @date 2024-12-21
+     */
     static getRequests = asyncHandler(async ( _, res) => {
         const requests = await RequestServices.getAllRequests();
         return res.status(200).json({
@@ -13,6 +29,16 @@ class RequestController {
         });
     });
 
+    /**
+     * Método para obtener una solicitud por su id
+     * 
+     * @param {Request} req Objeto de petición
+     * @param {Response} res Objeto de respuesta
+     * @returns {Promise<Response>} Respuesta de la petición
+     * 
+     * @Author Cristian David Herrera
+     * @date 2024-12-21
+     */
     static getRequestById = asyncHandler(async (req, res) => {
         const { id } = req.params;
 
@@ -26,6 +52,16 @@ class RequestController {
         });
     });
 
+    /**
+     * Método para crear una nueva solicitud
+     * 
+     * @param {Request} req Objeto de petición
+     * @param {Response} res Objeto de respuesta
+     * @returns {Promise<Response>} Respuesta de la petición
+     * 
+     * @Author Cristian David Herrera
+     * @date 2024-12-21
+     */ 
     static createRequest = asyncHandler(async (req, res) => {
         const request = req.body;
 
@@ -40,6 +76,16 @@ class RequestController {
         return res.status(201).json(newRequest);
     });
 
+    /**
+     * Método para eliminar una solicitud
+     * 
+     * @param {Request} req Objeto de petición
+     * @param {Response} res Objeto de respuesta
+     * @returns {Promise<Response>} Respuesta de la petición
+     * 
+     * @Author Cristian David Herrera
+     * @date 2024-12-21
+     */
     static deleteRequest = asyncHandler(async (req, res) => {
         const { id } = req.params;
 

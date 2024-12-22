@@ -1,6 +1,20 @@
 import joi from 'joi';
 import ValidateException from './validationException.js';
 
+/**
+ * Función para validar un esquema de joi y saber si cumple con las reglas
+ * de validación
+ * 
+ * @param {*} validations validaciones de joi 
+ * @param {*} body cuerpo a validar
+ * @param {*} type tipo de validación
+ * @returns {*} valor validado
+ * 
+ * @throws {ValidateException} Excepción de validación
+ * 
+ * @autor Cristian David Herrera
+ * @date 2024-12-21
+ */
 const schemaValidate = (validations, body, type = 'validation') => {
     const schema = joi.object(validations);
 

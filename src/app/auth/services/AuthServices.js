@@ -3,7 +3,23 @@ import ValidateException from "../../../utils/functions/validationException.js";
 import jwt from 'jsonwebtoken';
 import value from "../../../config/env.js";
 
+/**
+ * Clase para la lógica de negocio sobre la autenticación de un usuario
+ * 
+ * @author Cristian David Herrera
+ * @date 2024-12-21
+ */
 class AuthServices {
+    /**
+     * Método para crear un nuevo usuario
+     * 
+     * @param {*} user Objeto con los datos del usuario 
+     * @returns {Promise<Object>} Objeto con la respuesta de la petición
+     * 
+     * @throws ValidateException Si ocurre un error al crear el usuario
+     * @author Cristian David Herrera
+     * @date 2024-12-21
+     */
     static async create(user) {
         const response = {
             success: false,
@@ -27,6 +43,17 @@ class AuthServices {
         }
     }
 
+    /**
+     * Método para autenticar un usuario
+     * 
+     * @param {*} param0 Objeto con los datos del usuario
+     * @returns {Promise<Object>} Objeto con la respuesta de la petición
+     * 
+     * @throws ValidateException Si ocurre un error al iniciar sesión
+     * 
+     * @Author Cristian David Herrera
+     * @date 2024-12-21
+     */
     static async Login({ usuario, contraseña }) {
         const response = {
             success: false,

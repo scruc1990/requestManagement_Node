@@ -3,7 +3,24 @@ import schemaValidate from '../../../utils/functions/schemaValidate.js';
 import AuthServices from '../services/AuthServices.js';
 import Joi from 'joi';
 
+/**
+ * Clase para el controlador de autenticación de usuarios y la creación de nuevos usuarios
+ * 
+ * @author Cristian David Herrera
+ * @date 2024-12-21
+ */
 class AuthController {
+
+  /**
+   * Método para crear un nuevo usuario
+   * 
+   * @param {Request} req Objeto de petición
+   * @param {Response} res Objeto de respuesta
+   * @returns {Promise<Response>} Respuesta de la petición
+   * 
+   * @author Cristian David Herrera
+   * @date 2024-12-21
+   */
   static create = asyncHandler(async (req, res) => {
     const user = req.body;
 
@@ -16,6 +33,16 @@ class AuthController {
     return res.status(201).json(newUser);
   });
 
+  /**
+   * Método para autenticar un usuario
+   * 
+   * @param {Request} req Objeto de petición
+   * @param {Response} res Objeto de respuesta
+   * @returns {Promise<Response>} Respuesta de la petición
+   * 
+   * @author Cristian David Herrera
+   * @date 2024-12-21
+   */
   static login = asyncHandler(async (req, res) => {
     const { usuario, contraseña } = req.body;
 

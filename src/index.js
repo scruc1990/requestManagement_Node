@@ -25,7 +25,10 @@ app.use('/api', ...router);
 app.use(handlerException);
 
 const { PORT } = value;
+
 app.listen( PORT, () => {
     console.log(`Server running on port ${PORT}`);
-}
-);
+});
+/**
+ * Archivo principal de la aplicación, en donde se configura el servidor
+ */

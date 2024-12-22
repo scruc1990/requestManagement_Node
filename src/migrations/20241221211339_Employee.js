@@ -1,5 +1,12 @@
-export async function up(knex) {
-  console.log(process.env.DB_SCHEMA, '1');
+  /**
+   * Función que crea la tabla empleado en la base de datos
+   * @param {*} knex Objeto de conexión a la base de datos
+   * 
+   * @author Cristian David Herrera
+   * @date 2024-12-21
+   */
+  export async function up(knex) {
+
     await knex.schema.withSchema(`${process.env.DB_SCHEMA}`).createTable('empleado', (table) => {
       table.integer('id').primary();
       table.date('fecha_ingreso').notNullable();
@@ -8,6 +15,13 @@ export async function up(knex) {
     });
   }
   
+  /**
+   * Función que elimina la tabla empleado en la base de datos
+   * @param {*} knex Objeto de conexión a la base de datos
+   * 
+   * @author Cristian David Herrera
+   * @date 2024-12-21
+   */
   export async function down(knex) {
     await knex.schema.withSchema(`${process.env.DB_SCHEMA}`).dropTable('empleado');
   }

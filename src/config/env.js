@@ -3,6 +3,13 @@ import Joi from 'joi';
 
 dotenv.config({ path: '.env' });
 
+/**
+ * Objeto de configuración de variables de entorno, en donde
+ * se valida que las variables que se usan en la aplicación
+ * 
+ * @author Cristian David Herrera
+ * @date 2024-12-21
+ */
 const envVarsSchema = Joi.object({
     PORT: Joi.number().port().default(3000),
     DB_PORT: Joi.number().default(5432),

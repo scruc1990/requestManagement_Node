@@ -3,7 +3,23 @@ import schemaValidate from '../../../utils/functions/schemaValidate.js';
 import EmployeeServices from '../services/EmployeeServices.js';
 import Joi from 'joi';
 
+/**
+ * Clase para el controlar las peticiones hacia empleados 
+ * 
+ * @Author Cristian David Herrera
+ * @date 2024-12-21
+ */
 class EmployeeController {
+    /**
+     * Método para obtener todos los empleados
+     * 
+     * @param {Request} _ Objeto de petición
+     * @param {Response} res Objeto de respuesta
+     * @returns {Promise<Response>} Respuesta de la petición
+     * 
+     * @Author Cristian David Herrera
+     * @date 2024-12-21
+     */
     static getEmployee = asyncHandler(async ( _, res) => {
         const employees = await EmployeeServices.getAllEmployees();
         return res.status(200).json({
@@ -13,6 +29,16 @@ class EmployeeController {
         });
     });
 
+    /**
+     * Método para obtener un empleado por su id
+     * 
+     * @param {Request} req Objeto de petición
+     * @param {Response} res Objeto de respuesta
+     * @returns {Promise<Response>} Respuesta de la petición
+     * 
+     * @Author Cristian David Herrera
+     * @date 2024-12-21
+     */
     static getEmployeeById = asyncHandler(async (req, res) => {
         const { id } = req.params;
 
@@ -26,6 +52,16 @@ class EmployeeController {
         });
     });
 
+    /**
+     * Método para crear un nuevo empleado
+     * 
+     * @param {Request} req Objeto de petición
+     * @param {Response} res Objeto de respuesta
+     * @returns {Promise<Response>} Respuesta de la petición
+     * 
+     * @Author Cristian David Herrera
+     * @date 2024-12-21
+     */
     static createEmployee = asyncHandler(async (req, res) => {
         const employee = req.body;
 
