@@ -1,6 +1,6 @@
 /**
  * Clase para el manejo de excepciones personalizadas
- * 
+ *
  * @author Cristian David Herrera
  * @date 2024-12-21
  */
@@ -12,5 +12,5 @@ class ValidateException extends Error {
     this.error = error;
   }
 }
-  
+
 export default ValidateException;
