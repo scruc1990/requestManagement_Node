@@ -14,8 +14,8 @@ import { logger } from '../utils/functions/logger.js';
  * @date 2024-12-21
  */
 const handlerException = (err, _, res, __) => {
-    logger.error(err.message);
-    logger.error(err.type);
+    logger.error(`${err.message} - ${err?.error?.message}`);
+
 
     let message = '';
 

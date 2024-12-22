@@ -5,10 +5,11 @@
  * @date 2024-12-21
  */
 class ValidateException extends Error {
-  constructor(menssage, code, type) {
+  constructor(menssage, code, error, type) {
     super(menssage);
     this.code = code;
     this.type = type;
+    this.error = error;
   }
 }
   

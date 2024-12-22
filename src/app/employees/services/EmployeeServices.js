@@ -1,4 +1,4 @@
-import ValidateException from '../../../utils/functions/validationException.js';
+import CustomException from '../../../utils/functions/CustomException.js';
 import EmployeeDao from '../dao/EmployeeDao.js';
 
 /**
@@ -13,7 +13,7 @@ class EmployeeServices {
      * 
      * @returns {Promise<Object>} Objeto con la respuesta de la petición
      * 
-     * @throws ValidateException Si ocurre un error al obtener los empleados
+     * @throws CustomException Si ocurre un error al obtener los empleados
      * 
      * @Author Cristian David Herrera
      * @date 2024-12-21
@@ -24,8 +24,7 @@ class EmployeeServices {
           return await EmployeeDao.getAll();
 
         } catch (error) {
-            console.error(error);
-            throw new ValidateException('Error al obtener los empleados', 500, 'error');
+            throw new CustomException('Error al obtener los empleados', 500, error, 'error');
         }
     }
 
@@ -35,7 +34,7 @@ class EmployeeServices {
      * @param {*} id Id del empleado
      * @returns {Promise<Object>} Objeto con la respuesta de la petición
      * 
-     * @throws ValidateException Si ocurre un error al obtener el empleado
+     * @throws CustomException Si ocurre un error al obtener el empleado
      * 
      * @Author Cristian David Herrera
      * @date 2024-12-21
@@ -46,8 +45,7 @@ class EmployeeServices {
         return await EmployeeDao.getById(id);
 
       } catch (error) {
-          console.error(error);
-          throw new ValidateException('Error al obtener el empleado', 500, 'error');
+          throw new CustomException('Error al obtener el empleado', 500, error, 'error');
       }
     }
 
@@ -57,7 +55,7 @@ class EmployeeServices {
      * @param {*} employee Objeto con los datos del empleado
      * @returns {Promise<Object>} Objeto con la respuesta de la petición
      * 
-     * @throws ValidateException Si ocurre un error al crear el empleado
+     * @throws CustomException Si ocurre un error al crear el empleado
      * 
      * @Author Cristian David Herrera
      * @date 2024-12-21
@@ -82,7 +80,7 @@ class EmployeeServices {
         return response;
       } catch (error) {
           console.error(error);
-          throw new ValidateException('Error al crear el empleado', 500, 'error');
+          throw new CustomException('Error al crear el empleado', 500, error, 'error');
       }
     }
 

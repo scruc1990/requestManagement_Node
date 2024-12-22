@@ -1,5 +1,5 @@
 import joi from 'joi';
-import ValidateException from './validationException.js';
+import CustomException from './CustomException.js';
 
 /**
  * Función para validar un esquema de joi y saber si cumple con las reglas
@@ -10,7 +10,7 @@ import ValidateException from './validationException.js';
  * @param {*} type tipo de validación
  * @returns {*} valor validado
  * 
- * @throws {ValidateException} Excepción de validación
+ * @throws {CustomException} Excepción de validación
  * 
  * @autor Cristian David Herrera
  * @date 2024-12-21
@@ -20,7 +20,7 @@ const schemaValidate = (validations, body, type = 'validation') => {
 
     const { error, value } = schema.validate(body);
 
-    if (error) throw new ValidateException(error.details[0].message, 400, type);
+    if (error) throw new CustomException(error.details[0].message, 400, type, null);
     
     return value;
 };

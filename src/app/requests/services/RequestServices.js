@@ -1,4 +1,4 @@
-import ValidateException from "../../../utils/functions/validationException.js";
+import CustomException from "../../../utils/functions/CustomException.js";
 import EmployeeServices from "../../employees/services/EmployeeServices.js";
 import RequestDao from "../dao/RequestDao.js";
 
@@ -14,7 +14,7 @@ class RequestServices {
      * 
      * @returns {Promise<Array>} Lista con las solicitudes
      * 
-     * @throws ValidateException Si ocurre un error al obtener las solicitudes
+     * @throws CustomException Si ocurre un error al obtener las solicitudes
      * 
      * @Author Cristian David Herrera
      * @date 2024-12-21 
@@ -23,8 +23,8 @@ class RequestServices {
         try {
             return await RequestDao.getAllWithEmployeeName();
         } catch (error) {
-            console.error(error);
-            throw new ValidateException('Error al obtener las solicitudes', 500, 'error');
+            
+            throw new CustomException('Error al obtener las solicitudes', 500, error, 'error');
         }
     }
 
@@ -34,7 +34,7 @@ class RequestServices {
      * @param {number} id Id de la solicitud
      * @returns {Promise<Object>} Objeto con los datos de la solicitud
      * 
-     * @throws ValidateException Si ocurre un error al obtener la solicitud
+     * @throws CustomException Si ocurre un error al obtener la solicitud
      * 
      * @Author Cristian David Herrera
      * @date 2024-12-21
@@ -43,8 +43,8 @@ class RequestServices {
         try {
             return await RequestDao.getById(id);
         } catch (error) {
-            console.error(error);
-            throw new ValidateException('Error al obtener la solicitud', 500, 'error');
+            
+            throw new CustomException('Error al obtener la solicitud', 500, error, 'error');
         }
     }
 
@@ -54,7 +54,7 @@ class RequestServices {
      * @param {*} request Objeto con los datos de la solicitud
      * @returns {Promise<Object>} Objeto con la respuesta de la petición
      * 
-     * @throws ValidateException Si ocurre un error al crear la solicitud
+     * @throws CustomException Si ocurre un error al crear la solicitud
      * 
      * @Author Cristian David Herrera
      * @date 2024-12-21
@@ -85,8 +85,8 @@ class RequestServices {
 
             return response;
         } catch (error) {
-            console.error(error);
-            throw new ValidateException('Error al crear la solicitud', 500, 'error');
+            
+            throw new CustomException('Error al crear la solicitud', 500, error, 'error');
         }
     }
 
@@ -96,7 +96,7 @@ class RequestServices {
      * @param {*} id Id de la solicitud
      * @returns {Promise<Object>} Objeto con la respuesta de la petición
      * 
-     * @throws ValidateException Si ocurre un error al eliminar la solicitud
+     * @throws CustomException Si ocurre un error al eliminar la solicitud
      * 
      * @Author Cristian David Herrera
      * @date 2024-12-21
@@ -119,8 +119,8 @@ class RequestServices {
 
             return response;
         } catch (error) {
-            console.error(error);
-            throw new ValidateException('Error al eliminar la solicitud', 500, 'error');
+            
+            throw new CustomException('Error al eliminar la solicitud', 500, error, 'error');
         }
     }
 }

@@ -1,5 +1,5 @@
 import AuthDao from "../dao/AuthDao.js";
-import ValidateException from "../../../utils/functions/validationException.js";
+import CustomException from "../../../utils/functions/CustomException.js";
 import jwt from 'jsonwebtoken';
 import value from "../../../config/env.js";
 
@@ -16,7 +16,7 @@ class AuthServices {
      * @param {*} user Objeto con los datos del usuario 
      * @returns {Promise<Object>} Objeto con la respuesta de la petición
      * 
-     * @throws ValidateException Si ocurre un error al crear el usuario
+     * @throws CustomException Si ocurre un error al crear el usuario
      * @author Cristian David Herrera
      * @date 2024-12-21
      */
@@ -38,8 +38,7 @@ class AuthServices {
 
             return response;
         } catch (error) {
-            console.error(error);
-            throw new ValidateException('Error al crear el usuario', 500, 'error');
+            throw new CustomException('Error al crear el usuario', 500, error, 'error');
         }
     }
 
@@ -49,7 +48,7 @@ class AuthServices {
      * @param {*} param0 Objeto con los datos del usuario
      * @returns {Promise<Object>} Objeto con la respuesta de la petición
      * 
-     * @throws ValidateException Si ocurre un error al iniciar sesión
+     * @throws CustomException Si ocurre un error al iniciar sesión
      * 
      * @Author Cristian David Herrera
      * @date 2024-12-21
@@ -70,8 +69,7 @@ class AuthServices {
 
             return response;
         } catch (error) {
-            console.error(error);
-            throw new ValidateException('Error al iniciar sesión', 500, 'error');
+            throw new CustomException('Error al iniciar sesión', 500, error, 'error');
         }
     }
 }
