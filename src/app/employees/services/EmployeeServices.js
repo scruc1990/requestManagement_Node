@@ -1,4 +1,4 @@
-import ValidateException from '../../utils/functions/validationException.js';
+import ValidateException from '../../../utils/functions/validationException.js';
 import EmployeeDao from '../dao/EmployeeDao.js';
 
 class EmployeeServices {
@@ -25,19 +25,29 @@ class EmployeeServices {
     }
 
     static async createEmployee(employee) {
+      const response = {
+        success: false,
+        message: 'Empleado creado correctamente',
+        data: null
+    }
       try {
         const existEmployee = await EmployeeDao.getById(employee.id);
 
         if (existEmployee) {
-          throw new ValidateException('El empleado ya existe', 400, 'error');
+          response.message = 'El empleado ya existe';
+          return response;
         }
 
-        return await EmployeeDao.insert(employee);
+        response.success = true;
+        response.data = await EmployeeDao.insert(employee);
+
+        return response;
       } catch (error) {
           console.error(error);
           throw new ValidateException('Error al crear el empleado', 500, 'error');
       }
     }
+
 }
 
 export default EmployeeServices;

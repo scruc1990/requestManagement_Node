@@ -4,6 +4,8 @@ import router from './routes/index.js';
 import value from './config/env.js';
 import handlerException from './middlewares/handlerException.js';
 import purifyInyection from './middlewares/purifyInyection.js';
+import authRouter from './routes/auth.routes.js';
+import jwtMiddleware from './middlewares/jwtMiddleware.js';
 
 const app = express();
 
@@ -14,6 +16,8 @@ app.use(express.urlencoded({ extended: false }));
 
 
 app.use(purifyInyection);
+app.use('/api', authRouter);
+app.use(jwtMiddleware)
 app.use('/api', ...router);
 
 

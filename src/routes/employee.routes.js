@@ -1,10 +1,10 @@
 import { Router } from "express";
-import EmployeeControler from "../app/controllers/EmployeeControler.js";
+import EmployeeController from "../app/employees/controllers/EmployeeController.js";
 
 const employeeRouter = Router();
 
-employeeRouter.get("/employee", EmployeeControler.getEmployee);
-employeeRouter.get("/employee/:id", EmployeeControler.getEmployeeById);
-employeeRouter.post("/employee", EmployeeControler.createEmployee);
+employeeRouter.get("/employee", EmployeeController.getEmployee);
+employeeRouter.get("/employee/:id", EmployeeController.getEmployeeById);
+employeeRouter.post("/employee", EmployeeController.createEmployee);
 
 export default employeeRouter;
