@@ -10,8 +10,8 @@ Pasos:
 2. Ejecutar en la consola estando ubicados en la raiz del proyecto: *docker compose -f docker-compose.yml up -d --build*
 3. Ingresar a la base de datos dockerizada y crear la schema que se va a usar
 4. Ejecutar docker ps para obtener el id del contenedor
-5. Ejecutar las migraciones: *docker exec -it *id contenedor* npm run migrate*
-6. Ejecutar seeders: *docker exec -it *id contenedor* npm run seed*
+5. Ejecutar las migraciones: *docker exec -it **idcontenedor** npm run migrate*
+6. Ejecutar seeders: *docker exec -it **idcontenedor** npm run seed*
 
 
 # Comandos de Git utilizados
