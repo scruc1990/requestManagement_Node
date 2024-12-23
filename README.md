@@ -17,6 +17,8 @@ Pasos:
 # Comandos de Git utilizados
 
 - Estos fueron los primero comandos que se ejecutaron para poder subir el proyecto
+
+  
 git init git add .
 git commit -m "Se Sube proyecto finalizado cuando volvió laluz"
 git branch -M main git remote add origin https://github.com/scruc1990/requestManagement_Node.git
@@ -25,6 +27,8 @@ git add README.md git status git commit -m "Rama: main Autor: Cristian Herrera D
 git push
 
 - En el trascurso del desarrollo de la prueba tecnica se reutilizaron varios de estos comandos
+
+  
 git add .                                      -- Para añadir todos lo archivos modificados
 git rm --cache <nombre archivo>                -- Para quitar de staged changes un archivo en especifico
 git status                                     -- para validar que archivos estan en el staged changes y cuales no
