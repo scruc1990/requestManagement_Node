@@ -43,7 +43,12 @@ class EmployeeDao {
    * @date 2024-12-21
    */
   static async getAll() {
-    return await db(`${process.env.DB_SCHEMA}.empleado`).select();
+    const employees = await db(`${process.env.DB_SCHEMA}.empleado`).select();
+
+    return employees.map((employee) => ({
+      ...employee,
+      fecha_ingreso: new Date(employee.fecha_ingreso).toISOString().split('T')[0]
+    }));
   }
 }
 

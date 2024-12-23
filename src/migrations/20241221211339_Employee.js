@@ -7,7 +7,7 @@
  */
 export async function up(knex) {
   await knex.schema.withSchema(`${process.env.DB_SCHEMA}`).createTable('empleado', (table) => {
-    table.integer('id').primary();
+    table.bigInteger('id').primary();
     table.date('fecha_ingreso').notNullable();
     table.string('nombre', 50).notNullable();
     table.decimal('salario', 15, 2).notNullable();
