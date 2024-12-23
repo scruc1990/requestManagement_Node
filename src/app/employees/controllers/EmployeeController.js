@@ -67,10 +67,10 @@ class EmployeeController {
 
     const value = schemaValidate(
       {
-        id: Joi.number().required(),
-        fecha_ingreso: Joi.date().required(),
+        id: Joi.number().positive().max(9999999999).required(),
+        fecha_ingreso: Joi.date().max('now').required(),
         nombre: Joi.string().max(50).required(),
-        salario: Joi.number().required()
+        salario: Joi.number().positive().required()
       },
       employee
     );

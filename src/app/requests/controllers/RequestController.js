@@ -70,7 +70,7 @@ class RequestController {
         codigo: Joi.string().max(50).required(),
         descripcion: Joi.string().max(50).required(),
         resumen: Joi.string().max(50).required(),
-        id_empleado: Joi.number().required()
+        id_empleado: Joi.number().positive().max(9999999999).required()
       },
       request
     );
